@@ -1,9 +1,14 @@
 from random import randint
-n, m, a, b = int(input()), int(input()), int(input()), int(input()),
+n, m, a, b = int(input()), int(input()), int(input()), int(input())
+maxi = a
 matrix = []
 for i in range(n):
     l = []
     for j in range(m):
-        l.append(randint(a,b))
+        r = randint(a, b)
+        l.append(r)
+        if r > maxi:
+            maxi = r
     matrix.append(l)
 print(matrix)
+print(maxi)
