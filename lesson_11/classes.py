@@ -17,23 +17,39 @@ class Point:
         self.y = y
 
 class Figure:
-    def __init__(self, area=None, perimetr=None):
-        self.area = area
-        self.perimetr = perimetr
+    def __init__(self, a:Point=None, b:Point=None, c:Point=None, r=None):
+
+        self.a = a
+        self.b = b
+        self.c = c
+        self.r = r
+    def sides(self):
+        x1 = self.a.x
+        y1 = self.a.y
+        x2 = self.b.x
+        y2 = self.b.y
+        x3 = self.c.x
+        y3 = self.c.y
+
+        ab = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+        bc = math.sqrt((x3 - x2) ** 2 + (y3 - y2) ** 2)
+        ac = math.sqrt((x3 - x1) ** 2 + (y3 - y1) ** 2)
+        return ab, bc, ac
 
 class Circle(Figure):
-    def __init__(self, centre, len_radius):
-        self.centre = centre
-        self.len_radius = len_radius
+    def area(self):
+        s = math.pi * self.r ** 2
+        return s
+    def perimetr(self):
+        p = 2 * math.pi * self.r
+        return p
+
 
 
 
 
 class Triangle(Figure):
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
+
     def sides(self):
         x1 = self.a.x
         y1 = self.a.y
@@ -56,8 +72,14 @@ class Triangle(Figure):
         return result_area
 
 class Square(Figure):
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+    def area(self):
+        ab = math.sqrt((self.b.x - self.a.x) ** 2 + (self.b.y - self.a.y) ** 2)
+        s = ab ** 2
+        return s
+    def perimetr(self):
+        ab = math.sqrt((self.b.x - self.a.x) ** 2 + (self.b.y - self.a.y) ** 2)
+        p = ab * 4
+        return p
+
 
 

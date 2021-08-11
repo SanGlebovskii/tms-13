@@ -25,10 +25,10 @@ class MyTime:
                 self.minutes += 1
 
     def __add__(self, arg):
-        self.hours += arg.hours
-        self.minutes += arg.minutes
-        self.seconds += arg.seconds
-        return self
+        h = self.hours + arg.hours
+        m = self.minutes + arg.minutes
+        s = self.seconds + arg.seconds
+        return MyTime(hours=h, minutes=m, seconds=s)
 
     def __eq__(self, arg):
         return (self.hours == arg.hours) and (self.minutes == arg.minutes) and (self.seconds == arg.seconds)
@@ -45,13 +45,61 @@ class MyTime:
     def __str__(self):
         return f'{self.hours}:{self.minutes}:{self.seconds}'
     def __lt__(self, arg):
-        return (self.hours < arg.hours) or (self.minutes < arg.minutes) or (self.seconds < arg.seconds)
+        if self.hours < arg.hours:
+            return True
+        if self.hours > arg.hours:
+            return False
+        if self.minutes < arg.minutes:
+            return True
+        if self.minutes > arg.minutes:
+            return False
+        if self.seconds < arg.seconds:
+            return True
+        if self.seconds > arg.seconds:
+            return False
+
     def __gt__(self, arg):
-        return (self.hours > arg.hours) or (self.minutes > arg.minutes) or (self.seconds > arg.seconds)
+        if self.hours > arg.hours:
+            return True
+        if self.hours < arg.hours:
+            return False
+        if self.minutes > arg.minutes:
+            return True
+        if self.minutes < arg.minutes:
+            return False
+        if self.seconds > arg.seconds:
+            return True
+        if self.seconds < arg.seconds:
+            return False
+
     def __le__(self, arg):
-        return (self.hours <= arg.hours) or (self.minutes <= arg.minutes) or (self.seconds <= arg.seconds)
+        if self.hours <= arg.hours:
+            return True
+        if self.hours > arg.hours:
+            return False
+        if self.minutes <= arg.minutes:
+            return True
+        if self.minutes > arg.minutes:
+            return False
+        if self.seconds <= arg.seconds:
+            return True
+        if self.seconds > arg.seconds:
+            return False
+
     def __ge__(self, arg):
-        return (self.hours >= arg.hours) or (self.minutes >= arg.minutes) or (self.seconds >= arg.seconds)
+        if self.hours >= arg.hours:
+            return True
+        if self.hours < arg.hours:
+            return False
+        if self.minutes >= arg.minutes:
+            return True
+        if self.minutes < arg.minutes:
+            return False
+        if self.seconds >= arg.seconds:
+            return True
+        if self.seconds < arg.seconds:
+            return False
+
 
 
 obj_1 = MyTime(hours=22, minutes=24, seconds=1)
